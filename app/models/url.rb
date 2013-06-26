@@ -6,7 +6,7 @@ class Url < ActiveRecord::Base
 
   def generate_short_url
     self.short_url = loop do
-      random_token = SecureRandom.urlsafe_base64(nil, false)
+      random_token = SecureRandom.urlsafe_base64(6, false)
       break random_token unless Url.where(short_url: random_token).exists?
     end
   end
