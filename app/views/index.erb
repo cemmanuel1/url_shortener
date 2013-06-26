@@ -2,10 +2,18 @@
   <h2>Navid and Chantal's Awesome URL Shortener</h2>
 
   <h3>Enter Your URL below (don't mess up).</h3>
-  
+  <% if !@new_url.errors.empty?  %>
+    <p>Incorrect format.  Please enter url starting with 'http://' or 'https://' </p>
+  <% end %>
+  <br>
   <form name="url_submit" action= "/url" method="POST">
-    <div class='text_enter' align='center'>
-    <input type='type' name='long_url'>
+    <div class='text_enter' align='center' >
+    <input type='type' name='long_url' 
+
+    <% if !@new_url.errors.empty? %>
+      value=<%=  @long_url %>
+    <% end %>
+    >
     <input type="submit" value="Submit URL">
 
 </div>
